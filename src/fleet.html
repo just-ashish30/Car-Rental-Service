@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveEasy | Fleet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">DriveEasy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="fleet.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item dropdown" id="account-nav">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" id="account-menu">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
+            <div>
+                <h2 class="mb-1 text-center text-md-start">Our Fleet</h2>
+                <p class="text-muted mb-0 text-center text-md-start">Search and filter to find the best match for your trip.</p>
+            </div>
+            <div class="w-100 w-md-auto" style="max-width: 520px;">
+                <label for="fleet-search" class="form-label visually-hidden">Search vehicles</label>
+                <div class="input-group">
+                    <span class="input-group-text">Search</span>
+                    <input id="fleet-search" type="search" class="form-control" placeholder="Model, category (SUV), transmission..." autocomplete="off">
+                    <button class="btn btn-outline-secondary" type="button" id="fleet-reset">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <aside class="col-lg-3">
+                <div class="bg-white rounded-3 shadow-sm p-3">
+                    <h3 class="h6 mb-3">Filters</h3>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-type">Category</label>
+                        <select id="filter-type" class="form-select">
+                            <option value="">All</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Van">Van</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-transmission">Transmission</label>
+                        <select id="filter-transmission" class="form-select">
+                            <option value="">All</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Manual">Manual</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-seats">Seats (minimum)</label>
+                        <select id="filter-seats" class="form-select">
+                            <option value="">Any</option>
+                            <option value="2">2+</option>
+                            <option value="5">5+</option>
+                            <option value="7">7+</option>
+                            <option value="12">12+</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-max-price">Max price/day (USD)</label>
+                        <input id="filter-max-price" class="form-control" type="number" min="1" step="1" placeholder="e.g., 90">
+                        <div class="form-text">Leave empty to show all prices.</div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary" type="button" id="apply-filters">Apply filters</button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="col-lg-9">
+                <div class="row g-3" id="car-list">
+                    <!-- Cars injected via JS -->
+                </div>
+                <div class="text-center text-muted py-4 d-none" id="fleet-empty">
+                    No vehicles match your search. Try adjusting filters.
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge text-bg-primary">DriveEasy</span>
+                        <span class="small text-white-50">Car Rentals</span>
+                    </div>
+                    <p class="text-white-50 mb-3">
+                        Browse, compare, and book vehicles with clear pricing and modern UI interactions.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <a class="social-link" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a class="social-link" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a class="social-link" href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a class="social-link" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="footer-title mb-2">Quick Links</div>
+                    <a class="footer-link" href="index.html"><i class="bi bi-house-door"></i>Home</a><br>
+                    <a class="footer-link" href="fleet.html"><i class="bi bi-car-front"></i>Fleet</a><br>
+                    <a class="footer-link" href="booking.html"><i class="bi bi-calendar-check"></i>Booking</a><br>
+                    <a class="footer-link" href="dashboard.html"><i class="bi bi-speedometer2"></i>Dashboard</a>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="footer-title mb-2">Account</div>
+                    <a class="footer-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i>Login</a><br>
+                    <a class="footer-link" href="register.html"><i class="bi bi-person-plus"></i>Register</a><br>
+                    <a class="footer-link" href="profile.html"><i class="bi bi-person-circle"></i>Profile</a><br>
+                    <a class="footer-link" href="contact.html"><i class="bi bi-chat-dots"></i>Contact</a>
+                </div>
+
+                <div class="col-md-4 col-lg-3">
+                    <div class="footer-title mb-2">Support</div>
+                    <div class="text-white-50 small">
+                        <div class="mb-2"><i class="bi bi-geo-alt me-2"></i>123 Rental Street, Cityville</div>
+                        <div class="mb-2"><i class="bi bi-telephone me-2"></i>+1 234 567 890</div>
+                        <div class="mb-2"><i class="bi bi-envelope me-2"></i>support@driveeasy.com</div>
+                        <div><i class="bi bi-clock me-2"></i>Mon–Fri, 08:00–18:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-light-subtle my-4">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+                <div class="small text-white-50">&copy; <span id="year"></span> DriveEasy. All rights reserved.</div>
+                <div class="small text-white-50">Prototype disclaimer: frontend-only.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/mock-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --de-primary: #0d6efd;
+    --de-primary-600: #0b5ed7;
+    --de-secondary: #6c757d;
+    --de-bg: #f4f7ff;
+    --de-surface: rgba(255, 255, 255, 0.78);
+    --de-surface-solid: #ffffff;
+    --de-border: rgba(17, 24, 39, 0.10);
+    --de-dark: #212529;
+    --de-text: #111827;
+    --de-muted: rgba(17, 24, 39, 0.72);
+    --de-shadow-sm: 0 10px 30px rgba(17, 24, 39, 0.07);
+    --de-shadow-md: 0 14px 40px rgba(17, 24, 39, 0.12);
+}
+
+/* General Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--de-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--de-text);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Modern background (gradient + subtle pattern) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(1100px 540px at 10% -10%, rgba(13, 110, 253, 0.20), transparent 60%),
+        radial-gradient(950px 520px at 105% 0%, rgba(168, 85, 247, 0.14), transparent 55%),
+        radial-gradient(900px 520px at 40% 110%, rgba(25, 135, 84, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(17, 24, 39, 0.03) 100%),
+        repeating-linear-gradient(
+            45deg,
+            rgba(17, 24, 39, 0.035) 0px,
+            rgba(17, 24, 39, 0.035) 1px,
+            transparent 1px,
+            transparent 12px
+        );
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+a {
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.text-muted {
+    color: var(--de-muted) !important;
+}
+
+/* Navbar */
+.navbar {
+    backdrop-filter: saturate(180%) blur(10px);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--de-primary) !important;
+    letter-spacing: 0.2px;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+}
+
+.navbar .nav-link.active {
+    color: var(--de-primary) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1920&q=70');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section .btn-primary {
+    box-shadow: 0 12px 28px rgba(13, 110, 253, 0.35);
+}
+
+.hero-section .btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, var(--de-primary), var(--de-primary-600));
+    border-color: var(--de-primary-600);
+}
+
+.btn-primary:hover {
+    border-color: var(--de-primary-600);
+    box-shadow: 0 10px 24px rgba(13, 110, 253, 0.22);
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-primary:hover,
+.btn-outline-dark:hover {
+    transform: translateY(-1px);
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border-color: var(--de-border);
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.18);
+    border-color: rgba(13, 110, 253, 0.55);
+}
+
+.card,
+.accordion-item,
+.modal-content {
+    border-radius: 14px;
+}
+
+.card.shadow-sm,
+.bg-white.shadow-sm,
+.bg-white.rounded-3.shadow-sm,
+.modal-content {
+    border: 1px solid var(--de-border);
+    box-shadow: var(--de-shadow-sm);
+}
+
+.bg-white {
+    background-color: var(--de-surface) !important;
+    backdrop-filter: blur(10px) saturate(150%);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(10px) saturate(150%);
+}
+
+.bg-light {
+    background-color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.modal-header,
+.modal-footer {
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Cards */
+.car-card {
+    border: 1px solid var(--de-border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: var(--de-shadow-sm);
+}
+
+.car-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--de-shadow-md);
+}
+
+.car-card .card-img-top {
+    height: 190px;
+    object-fit: cover;
+    transition: transform 220ms ease;
+}
+
+.car-card:hover .card-img-top {
+    transform: scale(1.035);
+}
+
+/* Footer */
+footer,
+.site-footer {
+    margin-top: auto;
+    background: linear-gradient(180deg, #0b1220 0%, #070b13 100%);
+    color: white;
+    padding: 20px 0;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+footer a:hover {
+    color: white;
+}
+
+.site-footer .footer-title {
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.site-footer .footer-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+}
+
+.site-footer .footer-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.site-footer .social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+}
+
+.site-footer .social-link:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+    transform: translateY(-1px);
+}
+
+.site-footer hr {
+    opacity: 0.12;
+}
+
+.site-footer .badge.text-bg-primary {
+    box-shadow: 0 10px 24px rgba(13, 110, 253, 0.25);
+}
+
+.site-footer .text-white-50 {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Dashboard Table */
+.table-responsive {
+    background: rgba(255, 255, 255, 0.88);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table thead.table-dark th {
+    background-color: #0b1220 !important;
+}
+
+/* Nice section spacing on small screens */
+@media (max-width: 575.98px) {
+    .hero-section {
+        padding: 78px 0;
+    }
+}
