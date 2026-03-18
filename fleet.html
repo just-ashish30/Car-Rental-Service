@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveEasy | Register</title>
+    <title>DriveEasy | Fleet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
@@ -18,17 +18,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fleet.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="fleet.html">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
                     <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item dropdown" id="account-nav">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" id="account-menu">
                             <li><a class="dropdown-item" href="login.html">Login</a></li>
-                            <li><a class="dropdown-item active" href="register.html">Register</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -37,64 +37,77 @@
     </nav>
 
     <main class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h1 class="h3 mb-1">Create your account</h1>
-                        <p class="text-muted mb-4">Register to save bookings and manage your profile.</p>
-
-                        <div class="alert alert-warning small" role="alert">
-                            Prototype note: registration is stored in <strong>localStorage</strong> for this browser only (not secure, for academic demo).
-                        </div>
-
-                        <form id="register-form" novalidate>
-                            <div class="mb-3">
-                                <label for="reg-name" class="form-label">Full name</label>
-                                <input type="text" class="form-control" id="reg-name" placeholder="e.g., Amina K. Student" required minlength="2">
-                                <div class="invalid-feedback">Please enter your full name (at least 2 characters).</div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="reg-email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="reg-email" placeholder="name@example.com" required>
-                                <div class="invalid-feedback">Please enter a valid email address.</div>
-                            </div>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="reg-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="reg-password" placeholder="Minimum 8 characters" required minlength="8">
-                                    <div class="invalid-feedback">Password must be at least 8 characters.</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="reg-confirm" class="form-label">Confirm password</label>
-                                    <input type="password" class="form-control" id="reg-confirm" placeholder="Repeat password" required minlength="8">
-                                    <div class="invalid-feedback">Passwords must match.</div>
-                                </div>
-                            </div>
-
-                            <div class="mt-3 mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="reg-terms" required>
-                                    <label class="form-check-label" for="reg-terms">
-                                        I agree to the rental terms and privacy policy (prototype).
-                                    </label>
-                                    <div class="invalid-feedback">You must accept the terms to continue.</div>
-                                </div>
-                            </div>
-
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Create account</button>
-                            </div>
-                        </form>
-
-                        <p class="mt-3 mb-0 small text-muted">
-                            Already have an account? <a href="login.html">Login</a>.
-                        </p>
-                    </div>
+        <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
+            <div>
+                <h2 class="mb-1 text-center text-md-start">Our Fleet</h2>
+                <p class="text-muted mb-0 text-center text-md-start">Search and filter to find the best match for your trip.</p>
+            </div>
+            <div class="w-100 w-md-auto" style="max-width: 520px;">
+                <label for="fleet-search" class="form-label visually-hidden">Search vehicles</label>
+                <div class="input-group">
+                    <span class="input-group-text">Search</span>
+                    <input id="fleet-search" type="search" class="form-control" placeholder="Model, category (SUV), transmission..." autocomplete="off">
+                    <button class="btn btn-outline-secondary" type="button" id="fleet-reset">Reset</button>
                 </div>
             </div>
+        </div>
+
+        <div class="row g-4">
+            <aside class="col-lg-3">
+                <div class="bg-white rounded-3 shadow-sm p-3">
+                    <h3 class="h6 mb-3">Filters</h3>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-type">Category</label>
+                        <select id="filter-type" class="form-select">
+                            <option value="">All</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Van">Van</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-transmission">Transmission</label>
+                        <select id="filter-transmission" class="form-select">
+                            <option value="">All</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Manual">Manual</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-seats">Seats (minimum)</label>
+                        <select id="filter-seats" class="form-select">
+                            <option value="">Any</option>
+                            <option value="2">2+</option>
+                            <option value="5">5+</option>
+                            <option value="7">7+</option>
+                            <option value="12">12+</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="filter-max-price">Max price/day (USD)</label>
+                        <input id="filter-max-price" class="form-control" type="number" min="1" step="1" placeholder="e.g., 90">
+                        <div class="form-text">Leave empty to show all prices.</div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary" type="button" id="apply-filters">Apply filters</button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="col-lg-9">
+                <div class="row g-3" id="car-list">
+                    <!-- Cars injected via JS -->
+                </div>
+                <div class="text-center text-muted py-4 d-none" id="fleet-empty">
+                    No vehicles match your search. Try adjusting filters.
+                </div>
+            </section>
         </div>
     </main>
 
@@ -107,7 +120,7 @@
                         <span class="small text-white-50">Car Rentals</span>
                     </div>
                     <p class="text-white-50 mb-3">
-                        Create your account to save bookings and manage your profile (prototype stored locally).
+                        Browse, compare, and book vehicles with clear pricing and modern UI interactions.
                     </p>
                     <div class="d-flex gap-2">
                         <a class="social-link" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -158,4 +171,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
